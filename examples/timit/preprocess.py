@@ -31,7 +31,7 @@ def load_phone_map():
     return m60_48, m48_39
 
 def load_transcripts(path):
-    pattern = os.path.join(path, "*/*/*.phn")
+    pattern = os.path.join(path, "*/*/*/*.PHN")
     m60_48, _ = load_phone_map()
     files = glob.glob(pattern)
     # Standard practic is to remove all "sa" sentences
@@ -65,8 +65,7 @@ def split_by_speaker(data, dev_speakers=50):
     return dev, test
 
 def convert_to_wav(path):
-    print(path)
-    data_helpers.convert_full_set(path, "*/*/*/*.wav",
+    data_helpers.convert_full_set(path, "*/*/*/*.WAV",
             new_ext=WAV_EXT,
             use_avconv=False)
 
@@ -93,8 +92,6 @@ if __name__ == "__main__":
         help="Path where meta data is to be saved.")
     args = parser.parse_args()
     
-    print(args.input_directory, args.output_directory)
-
     path = os.path.join(args.input_directory, "timit")
     path = os.path.abspath(path)
 
