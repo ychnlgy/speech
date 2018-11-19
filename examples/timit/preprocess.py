@@ -83,24 +83,29 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
             description="Preprocess Timit dataset.")
 
+    parser.add_argument("input_directory",
+        help="Path where the dataset is saved."
     parser.add_argument("output_directory",
-        help="Path where the dataset is saved.")
+        help="Path where meta data is to be saved.")
     args = parser.parse_args()
 
-    path = os.path.join(args.output_directory, "timit")
+    path = os.path.join(args.input_directory, "timit")
     path = os.path.abspath(path)
+
+    outpath = os.path.join(args.output_directory, "timit")
+    outpath = os.path.abspath(outpath)
 
     print("Converting files from NIST to standard wave format...")
     convert_to_wav(path)
 
     print("Preprocessing train")
-    train = load_transcripts(os.path.join(path, "train"))
-    build_json(train, path, "train")
+    train = load_transcripts(os.path.join(path, "TRAIN"))
+    build_json(train, outpath, "train")
 
     print("Preprocessing dev")
-    transcripts = load_transcripts(os.path.join(path, "test"))
+    transcripts = load_transcripts(os.path.join(path, "TEST"))
     dev, test = split_by_speaker(transcripts)
-    build_json(dev, path, "dev")
+    build_json(dev, outpath, "dev")
 
     print("Preprocessing test")
-    build_json(test, path, "test")
+    build_json(test, outpath, "test")
