@@ -8,7 +8,9 @@ import glob
 import json
 import os
 import random
-import tqdm
+import tqdm, sys
+
+sys.path.append("../../")
 
 from speech.utils import data_helpers
 from speech.utils import wave
