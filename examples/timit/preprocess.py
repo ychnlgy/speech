@@ -91,6 +91,8 @@ if __name__ == "__main__":
     parser.add_argument("output_directory",
         help="Path where meta data is to be saved.")
     args = parser.parse_args()
+    
+    print(args.input_directory, args.output_directory)
 
     path = os.path.join(args.input_directory, "timit")
     path = os.path.abspath(path)
