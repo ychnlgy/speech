@@ -56,6 +56,7 @@ def split_by_speaker(data, dev_speakers=50):
     for k, v in data.items():
         speaker_dict[speaker_id(k)].append((k, v))
     speakers = list(speaker_dict.keys())
+    print(speakers)
     for t in TEST_SPEAKERS:
         t = t.upper()
         if t in speakers:
@@ -103,16 +104,16 @@ if __name__ == "__main__":
     outpath = os.path.abspath(outpath)
 
     print("Converting files from NIST to standard wave format...")
-    convert_to_wav(path)
+    #convert_to_wav(path)
 
     print("Preprocessing train")
-    train = load_transcripts(os.path.join(path, "TRAIN"))
-    build_json(train, outpath, "train")
+    #train = load_transcripts(os.path.join(path, "TRAIN"))
+    #build_json(train, outpath, "train")
 
     print("Preprocessing dev")
     transcripts = load_transcripts(os.path.join(path, "TEST"))
     dev, test = split_by_speaker(transcripts)
-    build_json(dev, outpath, "dev")
+    #build_json(dev, outpath, "dev")
 
     print("Preprocessing test")
-    build_json(test, outpath, "test")
+    #build_json(test, outpath, "test")
