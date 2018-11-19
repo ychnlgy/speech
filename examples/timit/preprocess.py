@@ -57,6 +57,7 @@ def split_by_speaker(data, dev_speakers=50):
         speaker_dict[speaker_id(k)].append((k, v))
     speakers = list(speaker_dict.keys())
     for t in TEST_SPEAKERS:
+        t = t.upper()
         speakers.remove(t)
     random.shuffle(speakers)
     dev = speakers[:dev_speakers]
