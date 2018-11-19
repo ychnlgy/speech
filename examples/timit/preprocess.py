@@ -85,6 +85,7 @@ if __name__ == "__main__":
 
     parser.add_argument("input_directory",
         help="Path where the dataset is saved."
+    )
     parser.add_argument("output_directory",
         help="Path where meta data is to be saved.")
     args = parser.parse_args()
