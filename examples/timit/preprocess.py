@@ -65,6 +65,7 @@ def split_by_speaker(data, dev_speakers=50):
     return dev, test
 
 def convert_to_wav(path):
+    print(path)
     data_helpers.convert_full_set(path, "*/*/*/*.wav",
             new_ext=WAV_EXT,
             use_avconv=False)
